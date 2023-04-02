@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_name: MyString
+  event_date: 2023-04-02
+  event_location: MyString
+  event_description: MyString
+  poster_url: MyString
+  event_price: 9.99
+  total_tickets: 1
+  start_time: 2023-04-02 22:31:10
+  end_time: 2023-04-02 22:31:10
+  contact: MyString
+  age_restriction: 1
+  ticket_info: MyText
+  lineup: MyText
+  category: MyString
+  likes: 1
+
+two:
+  event_name: MyString
+  event_date: 2023-04-02
+  event_location: MyString
+  event_description: MyString
+  poster_url: MyString
+  event_price: 9.99
+  total_tickets: 1
+  start_time: 2023-04-02 22:31:10
+  end_time: 2023-04-02 22:31:10
+  contact: MyString
+  age_restriction: 1
+  ticket_info: MyText
+  lineup: MyText
+  category: MyString
+  likes: 1

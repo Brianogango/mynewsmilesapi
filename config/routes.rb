@@ -12,4 +12,6 @@ delete '/users/:id', to: 'users#destroy'
  get '/messages', to: 'messages#index'
   post '/messages', to: 'messages#create'
   delete '/messages/:id', to: 'messages#destroy'
+# events
+
 end
