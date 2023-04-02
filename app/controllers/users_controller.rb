@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  skip_before_action :authorized, only: [:create, :update, :index, :show, :destroy]
 
   # GET /users or /users.json
   def index
@@ -8,13 +8,16 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    user = set_user
-    if user
-      render json: user
-    else
-      render json: {error: "User not found"}, status: :not_found
-    end
+  token = request.headers['Authorization'].split(' ')[1] # extract JWT token from header
+  decoded_token = decode_token(token)
+
+  if decoded_token && decoded_token['user_id'] == params[:id].to_i
+    @user = User.find(params[:id])
+    render json: @user
+  else
+    render json: { error: 'Unauthorized' }, status: :unauthorized
   end
+end
 
   # POST /users or /users.json
   def create
@@ -47,7 +50,18 @@ class UsersController < ApplicationController
   end
   end
 
+  def bookings
+  Booking.where(user_id: self.id)
+  end
   private
+
+    def decode_token(token)
+      begin
+        JWT.decode(token, 'my_s3cr3t', true, algorithm: 'HS256')[0]
+      rescue JWT::DecodeError
+        nil
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       user = User.find(params[:id])
