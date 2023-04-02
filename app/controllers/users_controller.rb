@@ -8,15 +8,13 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    user = User.find(params[:id])
+    user = set_user
     if user
       render json: user
     else
       render json: {error: "User not found"}, status: :not_found
     end
   end
-
- 
 
   # POST /users or /users.json
   def create
@@ -30,31 +28,29 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+     user = set_user
+  if user
+    user.update(user_params)
+    render json: user, status: :accepted
+  else
+    render json: {error:"Unable to update user"}, status: :unprocessable_entity
+  end
   end
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
-    end
+     user = set_user
+  if user.destroy
+    render json: { message: "User and associated bookings deleted" }, status: :ok
+  else
+    render json: { error: "Unable to delete user" }, status: :unprocessable_entity
+  end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      user = User.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
