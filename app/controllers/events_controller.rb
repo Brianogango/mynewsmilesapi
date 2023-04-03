@@ -28,12 +28,11 @@ end
 
   # POST /events
   def create
-    @event = Event.new(event_params)
-
-    if @event.save
-      render json: @event, status: :created, location: @event
+    event = Event.create(event_params)
+    if event.valid?
+      render json: event, status: :created, location: event
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: event.errors, status: :unprocessable_entity
     end
   end
 

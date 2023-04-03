@@ -14,7 +14,7 @@ delete '/users/:id', to: 'users#destroy'
   post '/messages', to: 'messages#create'
   delete '/messages/:id', to: 'messages#destroy'
 # events
-get '/events', to: 'events#index'
+  get '/events', to: 'events#index'
   get '/events/:id',to: 'events#show'
   delete '/events/:id', to: 'events#destroy'
   patch '/events/:id', to: 'events#update'
