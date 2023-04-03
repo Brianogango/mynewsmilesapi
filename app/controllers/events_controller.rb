@@ -30,7 +30,7 @@ end
   def create
     event = Event.create(event_params)
     if event.valid?
-      render json: event, status: :created, location: event
+      render json:{ status: "success", event: event, message: "Event created successfully"}
     else
       render json: event.errors, status: :unprocessable_entity
     end
