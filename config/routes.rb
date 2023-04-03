@@ -16,6 +16,7 @@ delete '/users/:id', to: 'users#destroy'
 # events
   get '/events', to: 'events#index'
   get '/events/:id',to: 'events#show'
+  post 'events', to: 'events#create'
   delete '/events/:id', to: 'events#destroy'
   patch '/events/:id', to: 'events#update'
   post '/events/:id/like', to: 'events#like', as: 'like_event'
