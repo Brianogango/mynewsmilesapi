@@ -10,7 +10,7 @@ delete '/users/:id', to: 'users#destroy'
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
 # message
- get '/messages', to: 'messages#index'
+  get '/messages', to: 'messages#index'
   post '/messages', to: 'messages#create'
   delete '/messages/:id', to: 'messages#destroy'
 # events
