@@ -23,7 +23,8 @@ end
   def create
         user = User.create(user_params)
         if user.valid?
-            render json: { status: "success": , message:"User saved successfully"}
+            render json: { status: "success", message: "User saved successfully" }
+
         else
             render json: {"errors": ["Validation errors"]}, status: :unprocessable_entity
         end
