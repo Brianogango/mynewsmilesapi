@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 # clear JWT token from client's storage
    def destroy
     cookies.delete(:jwt_token)
-    render json: { message: 'Logged out successfully' }
+    render json: { status: "loggedout" ,message: 'Logged out successfully' }
   end
 
   private
