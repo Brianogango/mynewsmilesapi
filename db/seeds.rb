@@ -71,23 +71,25 @@
 
 require 'faker'
 
-# Generate 10 fake events
-# 10.times do
-#   Event.create(
-#     event_name: Faker::Book.title,
-#     event_date: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
-#     event_location: Faker::Address.city,
-#     event_description: Faker::Lorem.paragraph_by_chars(number: 250, supplemental: false),
-#     poster_url: Faker::Internet.url,
-#     event_price: Faker::Commerce.price(range: 10..100.0),
-#     total_tickets: Faker::Number.between(from: 50, to: 500),
-#     start_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1, format: :default),
-#     end_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 4, format: :default),
-#     contact: Faker::PhoneNumber.cell_phone,
-#     age_restriction: Faker::Number.between(from: 18, to: 21),
-#     ticket_info: Faker::Lorem.paragraph_by_chars(number: 250, supplemental: false),
-#     lineup: Faker::Lorem.words(number: 3),
-#     category: Faker::Lorem.word,
-#     likes: Faker::Number.between(from: 0, to: 100)
-#   )
-# end
+categories = ["Concerts", "Festivals", "Parties", "Meetups", "Workshops", "Music", "Community", "Other"]
+
+10.times do
+  Event.create(
+    event_name: Faker::Book.title,
+    event_date: Faker::Date.between(from: '2022-01-01', to: '2022-12-31'),
+    event_location: Faker::Address.city,
+    event_description: Faker::Lorem.paragraph_by_chars(number: 250, supplemental: false),
+    poster_url: Faker::Internet.url,
+    event_price: Faker::Commerce.price(range: 10..100.0),
+    total_tickets: Faker::Number.between(from: 50, to: 500),
+    start_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1, format: :default),
+    end_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 4, format: :default),
+    contact: Faker::PhoneNumber.cell_phone,
+    age_restriction: Faker::Number.between(from: 18, to: 21),
+    ticket_info: Faker::Lorem.paragraph_by_chars(number: 250, supplemental: false),
+    lineup: Faker::Lorem.words(number: 3),
+    category: categories.sample,
+    likes: Faker::Number.between(from: 0, to: 100)
+  )
+end
+

@@ -51,9 +51,9 @@ group :development do
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
-
+gem 'listen', '~> 3.3'
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem "spring"
 end
 
 group :test do
@@ -66,3 +66,4 @@ group :production do
       gem 'puma', '~> 6.1', '>= 6.1.1'
       gem 'pg', '~> 1.4', '>= 1.4.6'
   end
+  gem "faker", "~> 3.1"
